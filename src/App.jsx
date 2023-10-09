@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-      <h1>Homehub</h1>
+      <h1 class="text-red-500 font-bold font-mono">Homehub</h1> 
     </>
   )
 }
