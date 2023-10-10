@@ -1,27 +1,27 @@
-import { Route } from "react-router-dom";
+import { Route } from 'react-router-dom';
 
-import Root from "../../components/nav/Nav";
-import ErrorPage from "../../components/pages/errors/Error-page";
-import Bills from "../../components/pages/Bills";
-import Menu from "../../components/pages/Menu";
-import ShoppingList from "../../components/pages/ShoppingList";
+import Root from '../../components/nav/Nav';
+import ErrorPage from '../../components/pages/errors/Error-page';
+import Bills from '../../components/pages/Bills';
+import Menu from '../../components/pages/Menu';
+import ShoppingList from '../../components/pages/ShoppingList';
 
 const homeRoute = (
   <Route
-    path="/"
+    path='/'
     element={ <Root /> }
     errorElement={ <ErrorPage /> }
   >
     <Route
-      path="bills"
+      path='bills'
       element={ <Bills /> }
     />
     <Route
-      path="menu"
+      path='menu'
       element={ <Menu /> }
     />
     <Route
-      path="shoppinglist"
+      path='shoppinglist'
       element={ <ShoppingList /> }
     />
   </Route>

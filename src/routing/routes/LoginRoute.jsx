@@ -1,11 +1,11 @@
-import { Route } from "react-router-dom";
+import { Route } from 'react-router-dom';
 
-import Login from "../../components/pages/auth/Login";
-import ErrorPage from "../../components/pages/errors/Error-page";
+import Login from '../../components/pages/auth/Login';
+import ErrorPage from '../../components/pages/errors/Error-page';
 
 const loginRoute = (
   <Route
-    path="/login"
+    path='/login'
     element={ <Login /> }
     errorElement={ <ErrorPage /> }
   />
