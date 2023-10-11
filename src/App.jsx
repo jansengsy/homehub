@@ -4,14 +4,14 @@ import './index.css';
 
 import { ProtectedRoute } from './routing/routes/ProtectedRoute';
 
-// Components
-import Login from './components/pages/auth/Login';
-import Nav from './components/nav/Nav';
+// Pages
 import Bills from './components/pages/Bills';
-import ShoppingList from './components/pages/ShoppingList';
-import Menu from './components/pages/Menu';
-import Unprotected from './components/pages/UnprotectedPage';
 import ErrorPage from './components/pages/errors/Error-page';
+import Login from './components/pages/auth/Login';
+import Menu from './components/pages/Menu';
+import Nav from './components/nav/Nav';
+import ShoppingList from './components/pages/ShoppingList';
+import Unprotected from './components/pages/UnprotectedPage';
 
 //Hooks
 import useToken from './hooks/useToken';
@@ -28,15 +28,15 @@ function App() {
       children: [
         {
           path: 'bills',
-          element: <Bills />,
+          element: <ProtectedRoute><Bills /></ProtectedRoute>,
         },
         {
           path: 'menu',
-          element: <Menu />,
+          element: <ProtectedRoute><Menu /></ProtectedRoute>,
         },
         {
           path: 'shoppinglist',
-          element: <ShoppingList />,
+          element: <ProtectedRoute><ShoppingList /></ProtectedRoute>,
         },
       ],
     },
