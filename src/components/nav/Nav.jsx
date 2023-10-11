@@ -1,7 +1,7 @@
 import { Outlet, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function Root() {
+export default function Nav() {
 	return (
 		<>
 			<div className='flex'>

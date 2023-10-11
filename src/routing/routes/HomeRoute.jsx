@@ -1,6 +1,6 @@
 import { Route } from 'react-router-dom';
 
-import Root from '../../components/nav/Nav';
+import Nav from '../../components/nav/Nav';
 import ErrorPage from '../../components/pages/errors/Error-page';
 import Bills from '../../components/pages/Bills';
 import Menu from '../../components/pages/Menu';
@@ -9,7 +9,7 @@ import ShoppingList from '../../components/pages/ShoppingList';
 const homeRoute = (
   <Route
     path='/'
-    element={ <Root /> }
+    element={ <Nav /> }
     errorElement={ <ErrorPage /> }
   >
     <Route
