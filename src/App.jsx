@@ -10,7 +10,6 @@ import Login from './components/pages/auth/Login';
 //Hooks
 import useToken from './hooks/useToken';
 
-// I could have created the ReactDOM root here, but keeping a more traditionla CRA style
 function App() {
   
   const { token, setToken } = useToken();
