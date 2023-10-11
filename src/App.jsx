@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { RouterProvider, Route } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
 
 import './index.css';
 
