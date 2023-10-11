@@ -4,7 +4,12 @@ import { RouterProvider, Route } from 'react-router-dom';
 import './index.css';
 
 import Router from './routing/router';
+
+// Components
 import Login from './components/pages/auth/Login';
+
+//Hooks
+import useToken from './hooks/useToken';
 
 // Icons
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -15,7 +20,8 @@ library.add(fas, far);
 
 // I could have created the ReactDOM root here, but keeping a more traditionla CRA style
 function App() {
-  const [token, setToken] = useState(null);
+  
+  const { token, setToken } = useToken();
 
   if(!token) {
     return <Login setToken={setToken} />;
