@@ -23,6 +23,11 @@ export default function Login({ setToken }) {
       password
     });
     setToken(token);
+    redirect();
+  }
+
+  function redirect() {
+    window.location.replace(window.location.origin + '/');
   }
 
   return (
