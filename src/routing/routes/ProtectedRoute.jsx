@@ -14,5 +14,5 @@ export const ProtectedRoute = ({ children }) => {
 };
 
 ProtectedRoute.propTypes = {
-  children: PropTypes.element.isRequired, // You can adjust the prop type based on your needs
+  children: PropTypes.element.isRequired,
 };
