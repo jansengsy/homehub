@@ -13,7 +13,6 @@ import Nav from './components/nav/Nav';
 import ShoppingList from './components/pages/ShoppingList';
 import Unprotected from './components/pages/UnprotectedPage';
 
-//Hooks
 import useToken from './hooks/useToken';
 
 function App() {
