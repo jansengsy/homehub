@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import MenuIngredientsList from '../components/MenuIngredientsList';
+
 export default function AddMenuItem({onAddMenuItem, onClose}) {
 
   const [name, setName] = useState('');
@@ -79,22 +81,18 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
         </div>
         <div className="w-64">
           <p>Ingredient list:</p>
-          <ul className="mt-2 list-decimal">
-            {ingredients.map((ingredient, index) => (
-              <li key={index} >{ingredient}</li>
-            ))}
-          </ul>
+          <MenuIngredientsList ingredients={ingredients}/>
         </div>
         
       </div>
       <div className="flex justify-end">
-            <button
-              className="px-3 py-2 m-2 bg-gray-600 hover:bg-gray-700 rounded text-white text-x"
-              type="submit"
-            >
-              Add Item
-            </button>
-          </div>
+        <button
+          className="px-3 py-2 m-2 bg-gray-600 hover:bg-gray-700 rounded text-white text-x"
+          type="submit"
+        >
+          Add Item
+        </button>
+      </div>
     </form>
   );
 }
