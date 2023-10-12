@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Grid from '../layout/Grid';
 import MenuCard from '../layout/MenuCard'
@@ -9,36 +9,20 @@ import AddMenuItem from '../forms/AddMenuItem';
 export default function Menu() {
 
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [menuItems, setMenuItems] = useState([
-		{
-			id: 0,
-			title: 'Steak',
-			ingredients: ['2 Ribeye steaks', '200g Butter', 'Fresh Thyme', 'Rock Salt'],
-			servings: 2,
-			prepTime: 20,
-		},
-		{
-			id: 1,
-			title: 'Curry',
-			ingredients: ['1 Large onion', 'Curry Spices', '1 Tin of chopped tomatoes', '200g Rice', '2 Naan breads'],
-			servings: 2,
-			prepTime: 40,
-		},
-		{
-			id: 2,
-			title: 'Salad',
-			ingredients: ['200g Spinach', '200 Black beans', '200g Cherry tomatoes', '150g Feta', 'Salad dressing'],
-			servings: 2,
-			prepTime: 5,
-		},
-		{
-			id: 3,
-			title: 'Bolognese',
-			ingredients: ['250g Beef mince', '250g Pork mince', '1 Tin of choppedtomatoes', '1 Medium carrot', '1 Large onion', '200g Spaghetti'],
-			servings: 2,
-			prepTime: 45,
-		},
-	]);
+	const [menuItems, setMenuItems] = useState([]);
+
+	useEffect(() => {
+    fetch('http://localhost:8080/menu', {
+			  method: 'GET',
+			})
+			.then(response => response.json())
+			.then(data => {
+				setMenuItems(data);
+			})
+			.catch(error => {
+				console.error('Error fetching data:', error);
+			});
+  }, []);
 
 	const removeMenuItem = (itemId) => {
 		const updatedMenuItems = menuItems.filter((item) => item.id !== itemId);
