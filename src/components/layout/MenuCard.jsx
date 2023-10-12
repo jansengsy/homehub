@@ -1,5 +1,5 @@
-import MenuIngredientsList from "../components/MenuIngredientsList";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import MenuIngredientsList from '../components/MenuIngredientsList';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function MenuCard({ item, removeMenuItem }) {
   const { id, title, ingredients, servings, prepTime } = item;

@@ -1,58 +1,65 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
 
 import MenuIngredientsList from '../components/MenuIngredientsList';
-import FormInput from '../components/FormInput';
 import FormError from '../components/FormError';
+
+import addMenuItemFormReducer from '../../reducers/addMenuItemFormReducer';
 
 export default function AddMenuItem({onAddMenuItem, onClose}) {
 
-  const [name, setName] = useState('');
-  const [ingredients, setIngredients] = useState([]);
-  const [prepTime, setPrepTime] = useState('');
-  const [servings, setServings] = useState('');
-  const [newIngredient, setNewIngredient] = useState('');
-  const [nameError, setNameError] = useState('');
-  const [prepTimeError, setPrepTimeError] = useState('');
-  const [servingsError, setServingsError] = useState('');
+  const initialState = {
+    name: '',
+    prepTime: null,
+    servings: null,
+    nameError: '',
+    prepTimeError: '',
+    servingsError: '',
+    ingredients: [],
+    newIngredient: '',
+  }
+
+  const [state, dispatch] = useReducer(addMenuItemFormReducer, initialState);
 
   const addNewIngredient = (e) => {
     e.preventDefault();
-    setIngredients([...ingredients, newIngredient]);
-    setNewIngredient('');
+    dispatch({ type: 'SET_FIELD', field: 'newIngredient', value: '' });
+    dispatch({ type: 'SET_FIELD', field: 'ingredients', value: [...state.ingredients, state.newIngredient] });
   }
 
   const resetForm = () => {
-    setName('');
-    setIngredients([]);
-    setPrepTime('');
-    setServings('');
-    setNameError('');
-    setPrepTimeError('');
-    setServingsError('');
+    dispatch({ type: 'RESET', value: initialState });
+  }
+
+  const setError = (field, value) => {
+    dispatch({ type: 'SET_ERROR', field, value });
+  }
+
+  const setField = (field, value) => {
+    dispatch({ type: 'SET_FIELD', field, value });
   }
 
   const validateForm = () => {
     let isValid = true;
 
-    if (name.trim() === '') {
-      setNameError('Name is required.');
+    if (state.name.trim() === '') {
+      setError('name', 'Name is required');
       isValid = false;
     } else {
-      setNameError('');
+      setError('name', '');
     }
 
-    if (!prepTime.match(/^\d+$/)) {
-      setPrepTimeError('Prep time must be a positive number.');
+    if (!state.prepTime?.match(/^\d+$/)) {
+      setError('prepTime', 'Prep time must be a positive number');
       isValid = false;
     } else {
-      setPrepTimeError('');
+      setError('prepTime', '');
     }
 
-    if (!servings.match(/^\d+$/)) {
-      setServingsError('Servings must be a positive number.');
+    if (!state.servings?.match(/^\d+$/)) {
+      setError('servings', 'Servings must be a positive number');
       isValid = false;
     } else {
-      setServingsError('');
+      setError('servings', '');
     }
 
     return isValid;
@@ -63,10 +70,10 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
 
     if (validateForm()) {
       const newItem = {
-        title: name,
-        ingredients: ingredients,
-        prepTime: prepTime,
-        servings: servings,
+        title: state.name,
+        ingredients: state.ingredients,
+        prepTime: state.prepTime,
+        servings: state.servings,
       };
 
       onAddMenuItem(newItem);
@@ -81,12 +88,21 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
         <div className="flex flex-col gap-4 w-64 mx-2 p-2">
           <label>
             <p>Menu item name:</p>
-            <FormInput setter={setName}/>
-            {nameError && <FormError error={nameError}/>}
+            <input
+              className="p-1 text-black"
+              type="text"
+              onChange={e => setField('name', e.target.value)}
+            />
+            {state.nameError && <FormError error={state.nameError}/>}
           </label>
           <label>
             <p>Ingredients:</p>
-            <FormInput setter={setNewIngredient} value={newIngredient}/>
+            <input
+              className="p-1 text-black"
+              type="text"
+              value={state.newIngredient}
+              onChange={e => setField('newIngredient', e.target.value)}
+            />
             <button
               className="px-3 py-2 mt-2 bg-gray-600 hover:bg-gray-700 rounded text-white text-xs"
               onClick={addNewIngredient}>Add ingredient!
@@ -94,18 +110,26 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
           </label>
           <label>
             <p>PrepTime (in mins):</p>
-            <FormInput setter={setPrepTime}/>
-            {prepTimeError && <FormError error={prepTimeError}/>}
+            <input
+              className="p-1 text-black"
+              type="text"
+              onChange={e => setField('prepTime', e.target.value)}
+            />
+            {state.prepTimeError && <FormError error={state.prepTimeError}/>}
           </label>
           <label>
             <p>Servings:</p>
-            <FormInput setter={setServings}/>
-            {servingsError && <FormError error={servingsError}/>}
+            <input
+              className="p-1 text-black"
+              type="text"
+              onChange={e => setField('servings', e.target.value)}
+            />
+            {state.servingsError && <FormError error={state.servingsError}/>}
           </label>
         </div>
         <div className="w-64">
           <p>Current ingredient list:</p>
-          <MenuIngredientsList ingredients={ingredients}/>
+          <MenuIngredientsList ingredients={state.ingredients}/>
         </div>
       </div>
       <div className="flex justify-end">
