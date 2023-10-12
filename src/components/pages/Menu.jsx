@@ -11,30 +11,46 @@ export default function Menu() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [menuItems, setMenuItems] = useState([
 		{
+			id: 0,
 			title: 'Steak',
 			ingredients: ['2 Ribeye steaks', '200g Butter', 'Fresh Thyme', 'Rock Salt'],
 			servings: 'Serves 2',
-			prepTime: '20 mins',
+			prepTime: 20,
 		},
 		{
+			id: 1,
 			title: 'Curry',
 			ingredients: ['1 Large onion', 'Curry Spices', '1 Tin of chopped tomatoes', '200g Rice', '2 Naan breads'],
 			servings: 'Serves 2',
-			prepTime: '40 mins',
+			prepTime: 40,
 		},
 		{
+			id: 2,
 			title: 'Salad',
 			ingredients: ['200g Spinach', '200 Black beans', '200g Cherry tomatoes', '150g Feta', 'Salad dressing'],
 			servings: 'Serves 2',
-			prepTime: '5 mins',
+			prepTime: 5,
 		},
 		{
+			id: 3,
 			title: 'Bolognese',
 			ingredients: ['250g Beef mince', '250g Pork mince', '1 Tin of choppedtomatoes', '1 Medium carrot', '1 Large onion', '200g Spaghetti'],
 			servings: 'Serves 2',
-			prepTime: '45 mins',
+			prepTime: 45,
 		},
 	]);
+
+	const removeMenuItem = (itemId) => {
+		const updatedMenuItems = menuItems.filter((item) => item.id !== itemId);
+		setMenuItems(updatedMenuItems);
+	};
+	
+	const addMenuItem = (newItem) => {
+		const maxId = Math.max(...menuItems.map((item) => item.id));
+		const newId = maxId + 1;
+  	newItem.id = newId;
+		setMenuItems([...menuItems, newItem]);
+	};
 
 	const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -44,9 +60,6 @@ export default function Menu() {
     setIsModalOpen(false);
   };
 
-	const handleAddMenuItem = (newItem) => {
-    setMenuItems([...menuItems, newItem]);
-  };
 
 	return (
 		<>
@@ -58,7 +71,7 @@ export default function Menu() {
 					</h3>
 					<Grid className="m-2">
 						{menuItems.map((item, index) => (
-							<MenuCard key={index} item={item} />
+							<MenuCard key={index} item={item} removeMenuItem={removeMenuItem} />
 						))}
 					</Grid>
 				</div>
@@ -69,7 +82,7 @@ export default function Menu() {
 				</div>
 
 				<Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-					<AddMenuItem onAddMenuItem={handleAddMenuItem} onClose={handleCloseModal}/>
+					<AddMenuItem onAddMenuItem={addMenuItem} onClose={handleCloseModal}/>
 				</Modal>
 			</div>
 		</>

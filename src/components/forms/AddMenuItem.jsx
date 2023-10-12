@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import MenuIngredientsList from '../components/MenuIngredientsList';
 import FormInput from '../components/FormInput';
+import FormError from '../components/FormError';
 
 export default function AddMenuItem({onAddMenuItem, onClose}) {
 
@@ -10,6 +11,9 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
   const [prepTime, setPrepTime] = useState('');
   const [servings, setServings] = useState('');
   const [newIngredient, setNewIngredient] = useState('');
+  const [nameError, setNameError] = useState('');
+  const [prepTimeError, setPrepTimeError] = useState('');
+  const [servingsError, setServingsError] = useState('');
 
   const addNewIngredient = (e) => {
     e.preventDefault();
@@ -22,21 +26,53 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
     setIngredients([]);
     setPrepTime('');
     setServings('');
+    setNameError('');
+    setPrepTimeError('');
+    setServingsError('');
+  }
+
+  const validateForm = () => {
+    let isValid = true;
+
+    if (name.trim() === '') {
+      setNameError('Name is required.');
+      isValid = false;
+    } else {
+      setNameError('');
+    }
+
+    if (!prepTime.match(/^\d+$/)) {
+      setPrepTimeError('Prep time must be a positive number.');
+      isValid = false;
+    } else {
+      setPrepTimeError('');
+    }
+
+    if (!servings.match(/^\d+$/)) {
+      setServingsError('Servings must be a positive number.');
+      isValid = false;
+    } else {
+      setServingsError('');
+    }
+
+    return isValid;
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const newItem = {
-      title: name,
-      ingredients: ingredients,
-      prepTime: prepTime,
-      servings: servings,
-    };
+    if (validateForm()) {
+      const newItem = {
+        title: name,
+        ingredients: ingredients,
+        prepTime: prepTime,
+        servings: servings,
+      };
 
-    onAddMenuItem(newItem);
-    resetForm();
-    onClose();
+      onAddMenuItem(newItem);
+      resetForm();
+      onClose();
+    }
   }
 
   return (
@@ -46,6 +82,7 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
           <label>
             <p>Menu item name:</p>
             <FormInput setter={setName}/>
+            {nameError && <FormError error={nameError}/>}
           </label>
           <label>
             <p>Ingredients:</p>
@@ -56,16 +93,18 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
             </button>
           </label>
           <label>
-            <p>PrepTime:</p>
+            <p>PrepTime (in mins):</p>
             <FormInput setter={setPrepTime}/>
+            {prepTimeError && <FormError error={prepTimeError}/>}
           </label>
           <label>
             <p>Servings:</p>
             <FormInput setter={setServings}/>
+            {servingsError && <FormError error={servingsError}/>}
           </label>
         </div>
         <div className="w-64">
-          <p>Ingredient list:</p>
+          <p>Current ingredient list:</p>
           <MenuIngredientsList ingredients={ingredients}/>
         </div>
       </div>
