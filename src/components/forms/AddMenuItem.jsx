@@ -16,6 +16,13 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
     setNewIngredient('');
   }
 
+  const resetForm = () => {
+    setName('');
+    setIngredients([]);
+    setPrepTime('');
+    setServings('');
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -27,12 +34,7 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
     };
 
     onAddMenuItem(newItem);
-
-    setName('');
-    setIngredients([]);
-    setPrepTime('');
-    setServings('');
-
+    resetForm();
     onClose();
   }
 
