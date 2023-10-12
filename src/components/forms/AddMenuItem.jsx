@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import MenuIngredientsList from '../components/MenuIngredientsList';
+import FormInput from '../components/FormInput';
 
 export default function AddMenuItem({onAddMenuItem, onClose}) {
 
@@ -44,21 +45,11 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
         <div className="flex flex-col gap-4 w-64 mx-2 p-2">
           <label>
             <p>Menu item name:</p>
-            <input
-              className="p-1 text-black"
-              type="text"
-              onChange={e => setName(e.target.value)}
-            />
+            <FormInput setter={setName}/>
           </label>
           <label>
             <p>Ingredients:</p>
-            <input
-              id="ingredient-input"
-              className="p-1 text-black"
-              type="text"
-              value={newIngredient}
-              onChange={e => setNewIngredient(e.target.value)}
-            />
+            <FormInput setter={setNewIngredient} value={newIngredient}/>
             <button
               className="px-3 py-2 mt-2 bg-gray-600 hover:bg-gray-700 rounded text-white text-xs"
               onClick={addNewIngredient}>Add ingredient!
@@ -66,26 +57,17 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
           </label>
           <label>
             <p>PrepTime:</p>
-            <input
-              className="p-1 text-black"
-              type="text"
-              onChange={e => setPrepTime(e.target.value)}
-            />
+            <FormInput setter={setPrepTime}/>
           </label>
           <label>
             <p>Servings:</p>
-            <input
-              className="p-1 text-black"
-              type="text"
-              onChange={e => setServings(e.target.value)}
-            />
+            <FormInput setter={setServings}/>
           </label>
         </div>
         <div className="w-64">
           <p>Ingredient list:</p>
           <MenuIngredientsList ingredients={ingredients}/>
         </div>
-        
       </div>
       <div className="flex justify-end">
         <button
