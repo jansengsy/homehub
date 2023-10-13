@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import Button from '../../components/Button';
+import CustomButton from '../../components/CustomButton';
 
 async function loginUser(credentials) {
   return fetch('http://localhost:8080/login', {
@@ -47,7 +47,7 @@ export default function Login({ setToken }) {
             </label>
           </div>
           <div>
-            <Button
+            <CustomButton
               content='login'
               type='submit'
             />

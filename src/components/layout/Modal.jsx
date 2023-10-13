@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from '../components/Button';
+import CustomButton from '../components/CustomButton';
 
 export default function Modal({ onClose, children }) {
 
@@ -13,7 +13,7 @@ export default function Modal({ onClose, children }) {
     <div className='fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-black bg-opacity-50' onClick={handleModalClick}>
       <div className='flex flex-col bg-white rounded shadow-md'>
         <div className='flex justify-end'>
-          <Button
+          <CustomButton
             click={onClose}
             content={<FontAwesomeIcon icon='fa-solid fa-times'/>}
             customClasses={'m-1'}

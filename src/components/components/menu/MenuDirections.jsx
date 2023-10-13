@@ -1,4 +1,4 @@
-import Button from '../Button';
+import CustomButton from '../CustomButton';
 import MenuIngredientsList from './MenuIngredientsList';
 import MenuStepsList from './MenuStepsList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -28,7 +28,7 @@ export default function MenuDirections({item, close}) {
           </div>
         </div>
       </div>
-      <Button content={'Go back to the menu'} click={close} customClasses={'mt-auto'}/>
+      <CustomButton content={'Go back to the menu'} click={close} customClasses={'mt-auto'}/>
     </div>
   );
 }

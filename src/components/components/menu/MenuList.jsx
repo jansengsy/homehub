@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import AddMenuItem from '../../forms/AddMenuItem';
-import Button from '../Button';
+import CustomButton from '../CustomButton';
 import Card from '../../layout/Card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Grid from '../../layout/Grid';
@@ -57,7 +57,7 @@ export default function MenuList({handleSelectedItem}) {
           </h3>
         </div>
         <div className='flex items-end'>
-          <Button
+          <CustomButton
             click={handleOpenModal}
             content={<FontAwesomeIcon icon='fa-solid fa-plus'/>}
             customClasses={'inline-flex items-center h-10'}
