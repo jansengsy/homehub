@@ -31,19 +31,19 @@ export default function Login({ setToken }) {
   }
 
   return (
-    <div className="login-wrapper m-2">
+    <div className='login-wrapper m-2'>
       <h1 className='text-xl mb-6'>Please Log In</h1>
       <form onSubmit={handleSubmit}>
         <label>
           <p>Username:</p>
-          <input className="border-2 border-black" type="text" onChange={e => setUserName(e.target.value)}/>
+          <input className='border-2 border-black' type='text' onChange={e => setUserName(e.target.value)}/>
         </label>
         <label>
           <p>Password:</p>
-          <input className="border-2 border-black" type="password" onChange={e => setPassword(e.target.value)}/>
+          <input className='border-2 border-black' type='password' onChange={e => setPassword(e.target.value)}/>
         </label>
         <div>
-          <button className="border-2 border-black mt-4 px-2" type="submit">Submit</button>
+          <button className='border-2 border-black mt-4 px-2' type='submit'>Submit</button>
         </div>
       </form>
     </div>
