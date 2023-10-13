@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 
 import Grid from '../layout/Grid';
-import MenuCard from '../layout/MenuCard'
+import Card from '../layout/Card'
 import Modal from '../layout/Modal';
 
 import AddMenuItem from '../forms/AddMenuItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import MenuCard from '../components/menu/MenuCard';
 
 export default function Menu() {
 
@@ -64,7 +65,9 @@ export default function Menu() {
 					</div>
 					<Grid>
 						{menuItems.map((item, index) => (
-							<MenuCard key={index} item={item} removeMenuItem={removeMenuItem} />
+							<Card key={index}>
+								<MenuCard item={item} removeMenuItem={removeMenuItem} />
+							</Card>
 						))}
 					</Grid>
 				</div>

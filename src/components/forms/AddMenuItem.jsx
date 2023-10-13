@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
 
-import MenuIngredientsList from '../components/MenuIngredientsList';
+import MenuIngredientsList from '../components/menu/MenuIngredientsList';
 import FormError from '../components/FormError';
 
 import addMenuItemFormReducer from '../../reducers/addMenuItemFormReducer';
@@ -84,13 +84,13 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="flex justify-between m-2 text-white">
-        <div className="flex flex-col gap-4 w-64 mx-2 p-2">
+      <div className='flex justify-between m-2 text-white'>
+        <div className='flex flex-col gap-4 w-64 mx-2 p-2'>
           <label>
             <p>Menu item name:</p>
             <input
-              className="p-1 text-black"
-              type="text"
+              className='p-1 text-black'
+              type='text'
               onChange={e => setField('name', e.target.value)}
             />
             {state.nameError && <FormError error={state.nameError}/>}
@@ -98,21 +98,21 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
           <label>
             <p>Ingredients:</p>
             <input
-              className="p-1 text-black"
-              type="text"
+              className='p-1 text-black'
+              type='text'
               value={state.newIngredient}
               onChange={e => setField('newIngredient', e.target.value)}
             />
             <button
-              className="px-3 py-2 mt-2 bg-gray-600 hover:bg-gray-700 rounded text-white text-xs"
+              className='px-3 py-2 mt-2 bg-gray-600 hover:bg-gray-700 rounded text-white text-xs'
               onClick={addNewIngredient}>Add ingredient!
             </button>
           </label>
           <label>
             <p>PrepTime (in mins):</p>
             <input
-              className="p-1 text-black"
-              type="text"
+              className='p-1 text-black'
+              type='text'
               onChange={e => setField('prepTime', e.target.value)}
             />
             {state.prepTimeError && <FormError error={state.prepTimeError}/>}
@@ -120,22 +120,22 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
           <label>
             <p>Servings:</p>
             <input
-              className="p-1 text-black"
-              type="text"
+              className='p-1 text-black'
+              type='text'
               onChange={e => setField('servings', e.target.value)}
             />
             {state.servingsError && <FormError error={state.servingsError}/>}
           </label>
         </div>
-        <div className="w-64">
+        <div className='w-64'>
           <p>Current ingredient list:</p>
           <MenuIngredientsList ingredients={state.ingredients}/>
         </div>
       </div>
-      <div className="flex justify-end">
+      <div className='flex justify-end'>
         <button
-          className="px-3 py-2 m-2 bg-gray-600 hover:bg-gray-700 rounded text-white text-x"
-          type="submit"
+          className='px-3 py-2 m-2 bg-gray-600 hover:bg-gray-700 rounded text-white text-x'
+          type='submit'
         >
           Add Item
         </button>
