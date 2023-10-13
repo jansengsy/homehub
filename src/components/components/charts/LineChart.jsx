@@ -39,7 +39,9 @@ export default function LineChart({ chartData }) {
   return (
     <>
       <h2  className="text-center">Energy usage over time</h2>
-      <Line options={options} data={data} />
+      <div className="flex justify-center max-h-[460px]">
+        <Line options={options} data={data} />
+      </div>
     </>
   );
 }

@@ -32,7 +32,9 @@ export default function PieChart({ chartData }) {
   return (
     <>
       <h2 className="text-center">Spending breakdown:</h2>
-      <Pie data={data} />
+      <div className="flex justify-center max-h-[460px]">
+        <Pie data={data} />
+      </div>
     </>
   );
 }
