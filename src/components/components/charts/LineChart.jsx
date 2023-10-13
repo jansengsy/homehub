@@ -1,4 +1,4 @@
-import { Line } from "react-chartjs-2";
+import { Line } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 
 export default function LineChart({ chartData }) {
@@ -38,8 +38,8 @@ export default function LineChart({ chartData }) {
 
   return (
     <>
-      <h2  className="text-center">Energy usage over time</h2>
-      <div className="flex justify-center max-h-[460px]">
+      <h2  className='text-center'>Energy usage over time</h2>
+      <div className='flex justify-center max-h-[460px]'>
         <Line options={options} data={data} />
       </div>
     </>

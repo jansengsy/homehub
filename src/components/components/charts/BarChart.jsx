@@ -1,4 +1,4 @@
-import { Bar } from "react-chartjs-2";
+import { Bar } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 
 export default function BarChart({ chartData }) {
@@ -36,10 +36,10 @@ export default function BarChart({ chartData }) {
 
   return (
     <>
-      <h2 className="text-center">Monthly water usage:</h2>
-      <div className="flex justify-center max-h-[460px]">
+      <h2 className='text-center'>Monthly water usage:</h2>
+      <div className='flex justify-center max-h-[460px]'>
         <Bar options={options} data={data} />
       </div>
     </>
   );
-};
+}

@@ -1,4 +1,4 @@
-import { Pie } from "react-chartjs-2";
+import { Pie } from 'react-chartjs-2';
 
 export default function PieChart({ chartData }) {
 
@@ -31,8 +31,8 @@ export default function PieChart({ chartData }) {
 
   return (
     <>
-      <h2 className="text-center">Spending breakdown:</h2>
-      <div className="flex justify-center max-h-[460px]">
+      <h2 className='text-center'>Spending breakdown:</h2>
+      <div className='flex justify-center max-h-[460px]'>
         <Pie data={data} />
       </div>
     </>
