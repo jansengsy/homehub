@@ -4,6 +4,7 @@ import MenuIngredientsList from '../components/menu/MenuIngredientsList';
 import FormError from '../components/FormError';
 
 import addMenuItemFormReducer from '../../reducers/addMenuItemFormReducer';
+import Button from '../components/Button';
 
 export default function AddMenuItem({onAddMenuItem, onClose}) {
 
@@ -103,10 +104,11 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
               value={state.newIngredient}
               onChange={e => setField('newIngredient', e.target.value)}
             />
-            <button
-              className='px-3 py-2 mt-2 bg-gray-600 hover:bg-gray-700 rounded text-white text-xs'
-              onClick={addNewIngredient}>Add ingredient!
-            </button>
+            <Button
+              content={'Add ingredient'}
+              click={addNewIngredient}
+              customClasses={'text-xs mt-2'}
+            />
           </label>
           <label>
             <p>PrepTime (in mins):</p>
@@ -133,12 +135,11 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
         </div>
       </div>
       <div className='flex justify-end'>
-        <button
-          className='px-3 py-2 m-2 bg-gray-600 hover:bg-gray-700 rounded text-white text-x'
-          type='submit'
-        >
-          Add Item
-        </button>
+        <Button
+          content='Add Item'
+          type={'submit'}
+          customClasses='m-2'
+        />
       </div>
     </form>
   );

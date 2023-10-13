@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import Button from '../../components/Button';
 
 async function loginUser(credentials) {
   return fetch('http://localhost:8080/login', {
@@ -31,21 +32,28 @@ export default function Login({ setToken }) {
   }
 
   return (
-    <div className='login-wrapper m-2'>
-      <h1 className='text-xl mb-6'>Please Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <p>Username:</p>
-          <input className='border-2 border-black' type='text' onChange={e => setUserName(e.target.value)}/>
-        </label>
-        <label>
-          <p>Password:</p>
-          <input className='border-2 border-black' type='password' onChange={e => setPassword(e.target.value)}/>
-        </label>
-        <div>
-          <button className='border-2 border-black mt-4 px-2' type='submit'>Submit</button>
-        </div>
-      </form>
+    <div className='flex justify-center items-center m-2 h-screen'>
+      <div>
+        <h1 className='text-xl mb-4'>Please Log In</h1>
+        <form onSubmit={handleSubmit}>
+          <div className='mb-2'>
+            <label>
+              <p>Username:</p>
+              <input className='border-2 border-black' type='text' onChange={e => setUserName(e.target.value)}/>
+            </label>
+            <label>
+              <p>Password:</p>
+              <input className='border-2 border-black' type='password' onChange={e => setPassword(e.target.value)}/>
+            </label>
+          </div>
+          <div>
+            <Button
+              content='login'
+              type='submit'
+            />
+          </div>
+        </form>
+      </div>
     </div>
   )
 }

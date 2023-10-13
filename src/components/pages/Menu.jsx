@@ -7,6 +7,7 @@ import Modal from '../layout/Modal';
 import AddMenuItem from '../forms/AddMenuItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MenuCard from '../components/menu/MenuCard';
+import Button from '../components/Button';
 
 export default function Menu() {
 
@@ -53,14 +54,16 @@ export default function Menu() {
 					<div className='flex justify-between'>
 						<div>
 							<h1 className='text-4xl text-white'>Menu</h1>
-							<h3 className='text-2xl text-white'>
+							<h3 className='text-xl text-white'>
 								Here are the items on your menu for this week:
 							</h3>
 						</div>
 						<div className='flex items-end'>
-							<button className='inline-flex items-center px-3 py-2 h-10 bg-gray-600 hover:bg-gray-700 rounded text-white' onClick={handleOpenModal}>
-								<FontAwesomeIcon icon='fa-solid fa-plus'/>
-							</button>
+							<Button
+								click={handleOpenModal}
+								content={<FontAwesomeIcon icon='fa-solid fa-plus'/>}
+								customClasses={'inline-flex items-center h-10'}
+							/>
 						</div>
 					</div>
 					<Grid>
@@ -72,9 +75,9 @@ export default function Menu() {
 					</Grid>
 				</div>
 
-				<Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+				{isModalOpen && <Modal onClose={handleCloseModal}>
 					<AddMenuItem onAddMenuItem={addMenuItem} onClose={handleCloseModal}/>
-				</Modal>
+				</Modal>}
 			</div>
 		</>
 	);
