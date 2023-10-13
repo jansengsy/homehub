@@ -1,7 +1,7 @@
-import Button from "../Button";
-import MenuIngredientsList from "./MenuIngredientsList";
-import MenuStepsList from "./MenuStepsList";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Button from '../Button';
+import MenuIngredientsList from './MenuIngredientsList';
+import MenuStepsList from './MenuStepsList';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function MenuDirections({item, close}) {
 

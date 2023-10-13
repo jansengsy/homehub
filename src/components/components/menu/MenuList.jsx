@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-import AddMenuItem from "../../forms/AddMenuItem";
-import Button from "../Button";
-import Card from "../../layout/Card";
+import AddMenuItem from '../../forms/AddMenuItem';
+import Button from '../Button';
+import Card from '../../layout/Card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Grid from "../../layout/Grid";
-import MenuCard from "./MenuCard";
-import Modal from "../../layout/Modal";
+import Grid from '../../layout/Grid';
+import MenuCard from './MenuCard';
+import Modal from '../../layout/Modal';
 
 export default function MenuList({handleSelectedItem}) {
 
