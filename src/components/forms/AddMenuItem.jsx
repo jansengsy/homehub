@@ -16,7 +16,9 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
     prepTimeError: '',
     servingsError: '',
     ingredients: [],
+    steps: [],
     newIngredient: '',
+    newStep: '',
   }
 
   const [state, dispatch] = useReducer(addMenuItemFormReducer, initialState);
@@ -25,6 +27,12 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
     e.preventDefault();
     dispatch({ type: 'SET_FIELD', field: 'newIngredient', value: '' });
     dispatch({ type: 'SET_FIELD', field: 'ingredients', value: [...state.ingredients, state.newIngredient] });
+  }
+
+  const addNewStep = (e) => {
+    e.preventDefault();
+    dispatch({ type: 'SET_FIELD', field: 'newStep', value: '' });
+    dispatch({ type: 'SET_FIELD', field: 'steps', value: [...state.steps, state.newStep] });
   }
 
   const resetForm = () => {
@@ -73,6 +81,7 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
       const newItem = {
         title: state.name,
         ingredients: state.ingredients,
+        steps: state.steps,
         prepTime: state.prepTime,
         servings: state.servings,
       };
@@ -111,6 +120,20 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
             />
           </label>
           <label>
+            <p>Steps:</p>
+            <input
+              className='p-1 text-black'
+              type='text'
+              value={state.newStep}
+              onChange={e => setField('newStep', e.target.value)}
+            />
+            <Button
+              content={'Add step'}
+              click={addNewStep}
+              customClasses={'text-xs mt-2'}
+            />
+          </label>
+          <label>
             <p>PrepTime (in mins):</p>
             <input
               className='p-1 text-black'
@@ -129,9 +152,11 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
             {state.servingsError && <FormError error={state.servingsError}/>}
           </label>
         </div>
-        <div className='w-64'>
+        <div className='w-64 h-64'>
           <p>Current ingredient list:</p>
-          <MenuIngredientsList ingredients={state.ingredients}/>
+          <div className='h-64 overflow-scroll'>
+            <MenuIngredientsList ingredients={state.ingredients}/>
+          </div>
         </div>
       </div>
       <div className='flex justify-end'>

@@ -1,83 +1,32 @@
 import { useState, useEffect } from 'react';
 
-import Grid from '../layout/Grid';
-import Card from '../layout/Card'
-import Modal from '../layout/Modal';
-
-import AddMenuItem from '../forms/AddMenuItem';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import MenuCard from '../components/menu/MenuCard';
-import Button from '../components/Button';
+import MenuDirections from '../components/menu/MenuDirections';
+import MenuList from '../components/menu/MenuList';
 
 export default function Menu() {
 
-	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [menuItems, setMenuItems] = useState([]);
+	const [isItemOpen, setIsItemOpen] = useState(false);
+	const [selectedItem, setSelectedItem] = useState(false);
 
-	useEffect(() => {
-    fetch('http://localhost:8080/menu', {
-			  method: 'GET',
-			})
-			.then(response => response.json())
-			.then(data => {
-				setMenuItems(data);
-			})
-			.catch(error => {
-				console.error('Error fetching data:', error);
-			});
-  }, []);
+	const handleSelectedItem = (item) => {
+		setIsItemOpen(true);
+		setSelectedItem(item)
+	}
 
-	const removeMenuItem = (itemId) => {
-		const updatedMenuItems = menuItems.filter((item) => item.id !== itemId);
-		setMenuItems(updatedMenuItems);
-	};
-	
-	const addMenuItem = (newItem) => {
-		const maxId = Math.max(...menuItems.map((item) => item.id));
-		const newId = maxId + 1;
-  	newItem.id = newId;
-		setMenuItems([...menuItems, newItem]);
-	};
-
-	const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+	const handleDeselectedItem = () => {
+		setIsItemOpen(false);
+		setSelectedItem(null)
+	}
 
 	return (
 		<>
 			<div className='h-full flex flex-col'>
-				<div className='flex-grow gap-2'>
-					<div className='flex justify-between'>
-						<div>
-							<h1 className='text-4xl text-white'>Menu</h1>
-							<h3 className='text-xl text-white'>
-								Here are the items on your menu for this week:
-							</h3>
-						</div>
-						<div className='flex items-end'>
-							<Button
-								click={handleOpenModal}
-								content={<FontAwesomeIcon icon='fa-solid fa-plus'/>}
-								customClasses={'inline-flex items-center h-10'}
-							/>
-						</div>
-					</div>
-					<Grid>
-						{menuItems.map((item, index) => (
-							<Card key={index}>
-								<MenuCard item={item} removeMenuItem={removeMenuItem} />
-							</Card>
-						))}
-					</Grid>
-				</div>
-
-				{isModalOpen && <Modal onClose={handleCloseModal}>
-					<AddMenuItem onAddMenuItem={addMenuItem} onClose={handleCloseModal}/>
-				</Modal>}
+				{!isItemOpen && 
+					<MenuList handleSelectedItem={handleSelectedItem}/>
+				}
+				{isItemOpen &&
+					<MenuDirections item={selectedItem} close={handleDeselectedItem}/>
+				}		
 			</div>
 		</>
 	);

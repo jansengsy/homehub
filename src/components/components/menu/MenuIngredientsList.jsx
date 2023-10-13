@@ -1,9 +1,11 @@
-export default function MenuIngredientsList({ingredients}) {
+export default function MenuIngredientsList({ ingredients }) {
   return (
-    <ul>
-      {ingredients.map((ingredient, index) => (
-        <li key={index}>{ingredient}</li>
-      ))}
-    </ul>
+      <div className='w-full overflow-scroll'>
+        <ul>
+          {ingredients.map((ingredient, index) => (
+            <li key={index}>{ingredient}</li>
+            ))}
+        </ul>
+      </div>
   );
 }

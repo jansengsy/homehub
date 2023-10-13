@@ -8,7 +8,7 @@ export default function MenuCard({ item, removeMenuItem }) {
   
   return (
     <>
-      <div className='flex justify-between'>
+      <div className='flex justify-between w-full'>
         <h3 className='text-2xl font-semibold'>{title}</h3>
         <Button
           content={<FontAwesomeIcon icon='fa-solid fa-trash'/>}
@@ -16,7 +16,7 @@ export default function MenuCard({ item, removeMenuItem }) {
         />
       </div>
       <MenuIngredientsList ingredients={ingredients}/>
-      <div className='flex justify-between'>
+      <div className='flex justify-between w-full'>
         <span className='text-left'>Serves {servings} people</span>
         <span className='text-right'>{prepTime} mins</span>
       </div>
