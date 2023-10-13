@@ -5,6 +5,7 @@ import MenuCard from '../layout/MenuCard'
 import Modal from '../layout/Modal';
 
 import AddMenuItem from '../forms/AddMenuItem';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Menu() {
 
@@ -46,22 +47,26 @@ export default function Menu() {
 
 	return (
 		<>
-			<div className="h-full flex flex-col">
-				<div className="flex-grow gap-2">
-					<h1 className="text-4xl text-white">Menu</h1>
-					<h3 className="text-2xl text-white">
-						Here are the items on your menu for this week:
-					</h3>
-					<Grid className="m-2">
+			<div className='h-full flex flex-col'>
+				<div className='flex-grow gap-2'>
+					<div className='flex justify-between'>
+						<div>
+							<h1 className='text-4xl text-white'>Menu</h1>
+							<h3 className='text-2xl text-white'>
+								Here are the items on your menu for this week:
+							</h3>
+						</div>
+						<div className='flex items-end'>
+							<button className='inline-flex items-center px-3 py-2 h-10 bg-gray-600 hover:bg-gray-700 rounded text-white' onClick={handleOpenModal}>
+								<FontAwesomeIcon icon='fa-solid fa-plus'/>
+							</button>
+						</div>
+					</div>
+					<Grid>
 						{menuItems.map((item, index) => (
 							<MenuCard key={index} item={item} removeMenuItem={removeMenuItem} />
 						))}
 					</Grid>
-				</div>
-				<div className="flex justify-end">
-					<button className="px-3 py-2 bg-gray-600 hover:bg-gray-700 rounded text-white" onClick={handleOpenModal}>
-						Add menu Item
-					</button>
 				</div>
 
 				<Modal isOpen={isModalOpen} onClose={handleCloseModal}>
