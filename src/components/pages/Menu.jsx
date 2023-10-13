@@ -19,15 +19,13 @@ export default function Menu() {
 	}
 
 	return (
-		<>
-			<div className='h-full flex flex-col'>
-				{!isItemOpen && 
-					<MenuList handleSelectedItem={handleSelectedItem}/>
-				}
-				{isItemOpen &&
-					<MenuDirections item={selectedItem} close={handleDeselectedItem}/>
-				}		
-			</div>
-		</>
+		<div className='h-full flex flex-col'>
+			{!isItemOpen && 
+				<MenuList handleSelectedItem={handleSelectedItem}/>
+			}
+			{isItemOpen &&
+				<MenuDirections item={selectedItem} close={handleDeselectedItem}/>
+			}		
+		</div>
 	);
 }
