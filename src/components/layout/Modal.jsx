@@ -11,7 +11,7 @@ export default function Modal({ onClose, children }) {
 
   return (
     <div className='fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-black bg-opacity-50' onClick={handleModalClick}>
-      <div className='flex flex-col bg-white rounded shadow-md'>
+      <div className='flex flex-col bg-white shadow-md'>
         <div className='flex justify-end'>
           <CustomButton
             click={onClose}

@@ -27,19 +27,19 @@ export default function SpendingTrends() {
       <div>
         <div className='flex'>
           <button
-            className={`py-2 px-4 hover:bg-gray-600 rounded-tl rounded-tr text-white ${selectedTab === 1 ? 'bg-gray-600' : 'bg-gray-700'}`}
+            className={`py-2 px-4 hover:bg-gray-600 text-white ${selectedTab === 1 ? 'bg-gray-600' : 'bg-gray-700'}`}
             onClick={() => setSelectedTab(1)}
           >
             Energy
           </button>
           <button
-            className={`py-2 px-4 hover:bg-gray-600 rounded-tl rounded-tr text-white ${selectedTab === 2 ? 'bg-gray-600' : 'bg-gray-700'}`}
+            className={`py-2 px-4 hover:bg-gray-600 text-white ${selectedTab === 2 ? 'bg-gray-600' : 'bg-gray-700'}`}
             onClick={() => setSelectedTab(2)}
           >
             Water
           </button>
           <button
-            className={`py-2 px-4 hover:bg-gray-600 rounded-tl rounded-tr text-white ${selectedTab === 3 ? 'bg-gray-600' : 'bg-gray-700'}`}
+            className={`py-2 px-4 hover:bg-gray-600 text-white ${selectedTab === 3 ? 'bg-gray-600' : 'bg-gray-700'}`}
             onClick={() => setSelectedTab(3)}
           >
             Spending
