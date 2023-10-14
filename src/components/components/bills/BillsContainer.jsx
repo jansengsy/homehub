@@ -1,4 +1,4 @@
-import BillTile from "./BillTile";
+import BillTile from './BillTile';
 
 export default function BillsContainer({bills}) {
 
