@@ -9,13 +9,12 @@ import { AuthContext } from '../../context/AuthContext';
 
 export default function Nav() {
 
-	const { user, deleteToken } = useContext(AuthContext);
+	const { deleteToken } = useContext(AuthContext);
 
 	return (
 		<div className='flex'>
 			<div id='sidebar' className='flex flex-col h-screen w-64 border-r-2 bg-gray-950 border-gray-800'>
 				<nav className='px-3 py-2'>
-					<h1 className='text-xl text-white text-center pb-2'>Welcome back, {user.username}!</h1>
 					<ul className='font-medium text-white'>
 						<Link to={'/'}>
 							<li className='rounded-lg hover:bg-gray-800 px-3 py-3'>
