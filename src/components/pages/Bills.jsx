@@ -11,15 +11,16 @@ export default function Bills() {
 
   useEffect(() => {
     fetch('http://localhost:8080/bills', {
-			  method: 'GET',
-			})
-			.then(response => response.json())
-			.then(data => {
-				setBills(data);
-			})
-			.catch(error => {
-				console.error('Error fetching data:', error);
-			});
+      method: 'GET',
+    })
+		.then(response => response.json())
+		.then(data => {
+      setLoading(false);
+      setBills(data);
+		})
+		.catch(error => {
+      console.error('Error fetching data:', error);
+		});
   }, []);
 
   return (

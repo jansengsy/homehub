@@ -1,7 +1,7 @@
 import { Bar } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 
-export default function BarChart({ chartData }) {
+export default function BarChart() {
 
   const options = {
     responsive: true,

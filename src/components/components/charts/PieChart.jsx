@@ -1,6 +1,6 @@
 import { Pie } from 'react-chartjs-2';
 
-export default function PieChart({ chartData }) {
+export default function PieChart() {
 
   const data = {
     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],

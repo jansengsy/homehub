@@ -1,7 +1,7 @@
 import { Line } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 
-export default function LineChart({ chartData }) {
+export default function LineChart() {
 
   const options = {
     responsive: true,

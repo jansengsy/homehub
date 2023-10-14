@@ -28,7 +28,7 @@ export default function MenuList({menuItems, setMenuItems, handleSelectedItem}) 
 	const addMenuItem = (newItem) => {
 		const maxId = Math.max(...menuItems.map((item) => item.id));
 		const newId = maxId + 1;
-  	newItem.id = newId;
+    newItem.id = newId;
 		setMenuItems([...menuItems, newItem]);
 	};
 
@@ -46,7 +46,7 @@ export default function MenuList({menuItems, setMenuItems, handleSelectedItem}) 
             click={handleOpenModal}
             content={<FontAwesomeIcon icon='fa-solid fa-plus'/>}
             customClasses={'inline-flex items-center h-10'}
-            />
+          />
         </div>
       </div>
       <Grid>

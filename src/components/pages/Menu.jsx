@@ -12,8 +12,8 @@ export default function Menu() {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-    fetch('http://localhost:8080/menu', {
-			  method: 'GET',
+		fetch('http://localhost:8080/menu', {
+				method: 'GET',
 			})
 			.then(response => response.json())
 			.then(data => {
@@ -23,21 +23,21 @@ export default function Menu() {
 			.catch(error => {
 				console.error('Error fetching data:', error);
 			});
-  }, []);
+	}, []);
 
 	const handleSelectedItem = (item) => {
 		setIsItemOpen(true);
-		setSelectedItem(item)
+		setSelectedItem(item);
 	}
 
 	const handleDeselectedItem = () => {
 		setIsItemOpen(false);
-		setSelectedItem(null)
+		setSelectedItem(null);
 	}
 
 	return (
 		<div className='h-full flex flex-col'>
-			{!isItemOpen && 
+			{!isItemOpen &&
 				loading ? <LoadingSpinner /> : <MenuList menuItems={menuItems} setMenuItems={setMenuItems} handleSelectedItem={handleSelectedItem}/>
 			}
 			{isItemOpen &&
