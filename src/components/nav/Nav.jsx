@@ -1,8 +1,15 @@
 import { Outlet, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import PageWrapper from '../layout/PageWrapper';
+import CustomButton from '../components/CustomButton';
+
+import useToken from '../../hooks/useToken';
 
 export default function Nav() {
+
+	const { deleteToken } = useToken();
+
 	return (
 		<div className='flex'>
 			<div id='sidebar' className='flex flex-col h-screen w-64 border-r-2 bg-gray-950 border-gray-800'>
@@ -30,6 +37,9 @@ export default function Nav() {
 						</Link>
 					</ul>
 				</nav>
+				<div className='flex justify-center mt-auto pb-4'>
+					<CustomButton content={'Logout'} click={deleteToken} customClasses={'w-full'}/>
+				</div>
 			</div>
 			<div id='detail' className='h-screen w-full'>
 				<PageWrapper>
