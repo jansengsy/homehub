@@ -1,6 +1,8 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState, useContext } from 'react';
+
 import CustomButton from '../../components/CustomButton';
+
+import { AuthContext } from '../../../context/AuthContext';
 
 async function loginUser(credentials) {
   return fetch('http://localhost:8080/login', {
@@ -12,18 +14,21 @@ async function loginUser(credentials) {
   }).then(data => data.json())
 }
 
-export default function Login({ setToken }) {
+export default function Login() {
 
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
 
+  const { setToken, setUser } = useContext(AuthContext);
+
   const handleSubmit = async e => {
     e.preventDefault();
-    const token = await loginUser({
+    const res = await loginUser({
       username,
       password
     });
-    setToken(token);
+    setToken(res.token);
+    setUser(res.user);
     redirect();
   }
 
@@ -39,11 +44,11 @@ export default function Login({ setToken }) {
           <div className='mb-2'>
             <label>
               <p>Username:</p>
-              <input className='border-2 border-black' type='text' onChange={e => setUserName(e.target.value)}/>
+              <input className='border-2 border-black py-1 px-2' type='text' onChange={e => setUserName(e.target.value)}/>
             </label>
             <label>
               <p>Password:</p>
-              <input className='border-2 border-black' type='password' onChange={e => setPassword(e.target.value)}/>
+              <input className='border-2 border-black py-1 px-2' type='password' onChange={e => setPassword(e.target.value)}/>
             </label>
           </div>
           <div>
@@ -56,8 +61,4 @@ export default function Login({ setToken }) {
       </div>
     </div>
   )
-}
-
-Login.propTypes = {
-  setToken: PropTypes.func.isRequired
 }

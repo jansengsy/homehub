@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
+import { AuthContextProvider } from './context/AuthContext';
+
 import './index.css'
 
 // Icons
@@ -11,11 +13,13 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 
 library.add(fas, far, fab);
 
-import App from './App.jsx'
+import App from './App.jsx';
 
 // I have kept a more traditional CRA style to keep things familiar
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <AuthContextProvider>
+      <App />
+    </AuthContextProvider>
   </React.StrictMode>,
 )

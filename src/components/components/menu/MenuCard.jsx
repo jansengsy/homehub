@@ -1,5 +1,4 @@
 import MenuIngredientsList from './MenuIngredientsList';
-import CustomButton from '../CustomButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function MenuCard({ item, removeMenuItem }) {
@@ -19,7 +18,7 @@ export default function MenuCard({ item, removeMenuItem }) {
         <button
           onClick={handleRemoveClick}
         >
-          <FontAwesomeIcon className="hover:text-red-500" icon='fa-solid fa-trash'/>
+          <FontAwesomeIcon className='hover:text-red-500' icon='fa-solid fa-trash'/>
         </button>
       </div>
       <MenuIngredientsList ingredients={ingredients}/>

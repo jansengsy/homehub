@@ -14,13 +14,7 @@ import Nav from './components/nav/Nav';
 import ShoppingList from './components/pages/ShoppingList';
 import Unprotected from './components/pages/UnprotectedPage';
 
-import useToken from './hooks/useToken';
-import useUser from './hooks/useUser';
-
 function App() {
-  
-  const { setToken } = useToken();
-  const { setUser } = useUser();
 
   const router = createBrowserRouter([
     {
@@ -57,7 +51,7 @@ function App() {
     },
     {
       path: '/login',
-      element: <Login setToken={setToken} setUser={setUser}/>,
+      element: <Login/>,
       errorElement: <ErrorPage />,
     }
   ]);

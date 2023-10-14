@@ -1,18 +1,15 @@
+import { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import useToken from '../../hooks/useToken';
+
+import { AuthContext } from '../../context/AuthContext';
 
 export const ProtectedRoute = ({ children }) => {
 
-  const { token } = useToken();
+  const { token } = useContext(AuthContext);
 
   if (!token) {
     return <Navigate to='/login' />;
   }
 
   return children;
-};
-
-ProtectedRoute.propTypes = {
-  children: PropTypes.element.isRequired,
 };
