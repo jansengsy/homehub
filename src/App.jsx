@@ -7,6 +7,7 @@ import { ProtectedRoute } from './routing/routes/ProtectedRoute';
 // Pages
 import Bills from './components/pages/Bills';
 import ErrorPage from './components/pages/errors/Error-page';
+import Home from './components/pages/Home';
 import Login from './components/pages/auth/Login';
 import Menu from './components/pages/Menu';
 import Nav from './components/nav/Nav';
@@ -14,10 +15,12 @@ import ShoppingList from './components/pages/ShoppingList';
 import Unprotected from './components/pages/UnprotectedPage';
 
 import useToken from './hooks/useToken';
+import useUser from './hooks/useUser';
 
 function App() {
   
   const { setToken } = useToken();
+  const { setUser } = useUser();
 
   const router = createBrowserRouter([
     {
@@ -25,6 +28,10 @@ function App() {
       element: <ProtectedRoute><Nav /></ProtectedRoute>,
       errorElement: <ErrorPage />,
       children: [
+        {
+          path: '/',
+          element: <ProtectedRoute><Home /></ProtectedRoute>,
+        },
         {
           path: 'bills',
           element: <ProtectedRoute><Bills /></ProtectedRoute>,
@@ -50,7 +57,7 @@ function App() {
     },
     {
       path: '/login',
-      element: <Login setToken={setToken}/>,
+      element: <Login setToken={setToken} setUser={setUser}/>,
       errorElement: <ErrorPage />,
     }
   ]);
