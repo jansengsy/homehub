@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import AddMenuItem from '../../forms/AddMenuItem';
 import CustomButton from '../CustomButton';
@@ -8,23 +8,9 @@ import Grid from '../../layout/Grid';
 import MenuCard from './MenuCard';
 import Modal from '../../layout/Modal';
 
-export default function MenuList({handleSelectedItem}) {
+export default function MenuList({menuItems, setMenuItems, handleSelectedItem}) {
 
-  const [menuItems, setMenuItems] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  useEffect(() => {
-    fetch('http://localhost:8080/menu', {
-			  method: 'GET',
-			})
-			.then(response => response.json())
-			.then(data => {
-				setMenuItems(data);
-			})
-			.catch(error => {
-				console.error('Error fetching data:', error);
-			});
-  }, []);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -43,7 +29,6 @@ export default function MenuList({handleSelectedItem}) {
 		const maxId = Math.max(...menuItems.map((item) => item.id));
 		const newId = maxId + 1;
   	newItem.id = newId;
-    console.log(newItem)
 		setMenuItems([...menuItems, newItem]);
 	};
 
