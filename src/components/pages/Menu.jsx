@@ -12,7 +12,7 @@ export default function Menu() {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		fetch('http://localhost:8080/menu', {
+		fetch('http://localhost:8080/menu/1', {
 				method: 'GET',
 			})
 			.then(response => response.json())
@@ -37,12 +37,7 @@ export default function Menu() {
 
 	return (
 		<div className='h-full flex flex-col'>
-			{!isItemOpen &&
-				loading ? <LoadingSpinner /> : <MenuList menuItems={menuItems} setMenuItems={setMenuItems} handleSelectedItem={handleSelectedItem}/>
-			}
-			{isItemOpen &&
-				<MenuDirections item={selectedItem} close={handleDeselectedItem}/>
-			}		
+			{loading ? <LoadingSpinner /> : isItemOpen ? <MenuDirections item={selectedItem} close={handleDeselectedItem}/> : <MenuList menuItems={menuItems} setMenuItems={setMenuItems} handleSelectedItem={handleSelectedItem}/> }		
 		</div>
 	);
 }

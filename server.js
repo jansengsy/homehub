@@ -61,7 +61,7 @@ app.use('/bills', (req, res) => {
 })
 
 // Menu endpoint to provide dummy menu items
-app.use('/menu', (req, res) => {
+app.use('/menu/:id', (req, res) => {
   res.send([
     {
       id: 0,

@@ -30,7 +30,11 @@ function App() {
           element: <ProtectedRoute><Bills /></ProtectedRoute>,
         },
         {
-          path: 'menu',
+          path: 'menu/:id',
+          element: <ProtectedRoute><Menu /></ProtectedRoute>,
+        },
+        {
+          path: 'menu/:id/menuItem/:itemid',
           element: <ProtectedRoute><Menu /></ProtectedRoute>,
         },
         {

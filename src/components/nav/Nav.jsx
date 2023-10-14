@@ -25,7 +25,7 @@ export default function Nav() {
 								<FontAwesomeIcon icon='fa-solid fa-credit-card' className='pr-2'/>Bills
 							</li>
 						</Link>
-						<Link to={'/menu'}>
+						<Link to={'/menu/1'}>
 							<li className='rounded-lg hover:bg-gray-900 px-3 py-3'>
 								<FontAwesomeIcon icon='fa-solid fa-utensils' className='pr-2'/>Menu
 							</li>
