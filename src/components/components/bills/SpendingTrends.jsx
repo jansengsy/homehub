@@ -18,7 +18,7 @@ import PieChart from '../charts/PieChart';
 
 ChartJS.register(ArcElement, BarElement, PointElement, LineElement, CategoryScale, LinearScale, Tooltip, Legend);
 
-export default function SpendingTrendsTab() {
+export default function SpendingTrends() {
 
   const [selectedTab, setSelectedTab] = useState(1);
 

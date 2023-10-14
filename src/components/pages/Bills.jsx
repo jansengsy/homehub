@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import SpendingTrendsTab from '../components/bills/SpendingTrendsTab';
+import SpendingTrends from '../components/bills/SpendingTrends';
 import BillsContainer from '../components/bills/BillsContainer';
 import LoadingSpinner from '../components/LoadingSpinner';
 
@@ -29,7 +29,7 @@ export default function Bills() {
         {!loading ? <BillsContainer bills={bills}/> : <LoadingSpinner />}
       </div>
       <div className='mt-auto'>
-        <SpendingTrendsTab />
+        <SpendingTrends />
       </div>
     </div>
   );
