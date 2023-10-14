@@ -17,22 +17,22 @@ export default function Nav() {
 					<ul className='font-medium text-white'>
 						<Link to={'/'}>
 							<li className='rounded-lg hover:bg-gray-800 px-3 py-3'>
-							<FontAwesomeIcon icon='fa-solid fa-home' className='pr-2'/>HomeHub
+								<FontAwesomeIcon icon='fa-solid fa-home' className='pr-2'/>HomeHub
 							</li>
 						</Link>
 						<Link to={'/bills'}>
 							<li className='rounded-lg hover:bg-gray-900 px-3 py-3'>
-							<FontAwesomeIcon icon='fa-solid fa-credit-card' className='pr-2'/>Bills
+								<FontAwesomeIcon icon='fa-solid fa-credit-card' className='pr-2'/>Bills
 							</li>
 						</Link>
 						<Link to={'/menu'}>
 							<li className='rounded-lg hover:bg-gray-900 px-3 py-3'>
-							<FontAwesomeIcon icon='fa-solid fa-utensils' className='pr-2'/>Menu
+								<FontAwesomeIcon icon='fa-solid fa-utensils' className='pr-2'/>Menu
 							</li>
 						</Link>
 						<Link to={'/shoppinglist'}>
 							<li className='rounded-lg hover:bg-gray-900 px-3 py-3'>
-							<FontAwesomeIcon icon='fa-solid fa-scroll' className='pr-2'/>Shopping List
+								<FontAwesomeIcon icon='fa-solid fa-scroll' className='pr-2'/>Shopping List
 							</li>
 						</Link>
 					</ul>
