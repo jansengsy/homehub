@@ -5,17 +5,15 @@ import BillsContainer from '../components/bills/BillsContainer';
 
 export default function Bills() {
 
-  const [chartData, setChartData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [bills, setBills] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8080/data', {
+    fetch('http://localhost:8080/bills', {
 			  method: 'GET',
 			})
 			.then(response => response.json())
 			.then(data => {
-				setChartData(data);
-        setLoading(false);
+				setBills(data);
 			})
 			.catch(error => {
 				console.error('Error fetching data:', error);
@@ -25,17 +23,12 @@ export default function Bills() {
   return (
     <div id='bills' className='flex flex-col min-h-full'>
       <h1 className='text-4xl text-white'>Your houshold bills:</h1>
-      {loading && <h1>Loading!</h1>}
-      {!loading &&
-        <>
-          <div>
-            <BillsContainer />
-          </div>
-          <div className='mt-auto'>
-            <SpendingTrendsTab />
-          </div>
-        </>
-      }
+      <div>
+        <BillsContainer bills={bills}/>
+      </div>
+      <div className='mt-auto'>
+        <SpendingTrendsTab />
+      </div>
     </div>
   );
 }
