@@ -5,6 +5,7 @@ export default function BarChart() {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top',
@@ -37,7 +38,7 @@ export default function BarChart() {
   return (
     <>
       <h2 className='text-center text-white'>Monthly water usage:</h2>
-      <div className='flex justify-center max-h-[400px]'>
+      <div className='flex justify-center w-full h-[400px]'>
         <Bar options={options} data={data} />
       </div>
     </>
