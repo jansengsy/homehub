@@ -1,13 +1,16 @@
 import BillTile from './BillTile';
+import Grid from '../../layout/Grid';
 
 export default function BillsContainer({bills}) {
 
 
   return (
-    <div className='grid grid-cols-2 gap-4 w-full max-h-72 overflow-y-scroll pr-4 my-2'>
-      {bills.map((bill, index) => (
-        <BillTile key={index} details={bill}/>
-      ))}
+    <div className='max-h-72 overflow-scroll w-full'>
+      <Grid>
+        {bills.map((bill, index) => (
+          <BillTile key={index} details={bill}/>
+        ))}
+      </Grid>
     </div>
   );
 }
