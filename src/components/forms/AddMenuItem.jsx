@@ -1,6 +1,7 @@
 import { useReducer } from 'react';
 
 import MenuIngredientsList from '../components/menu/MenuIngredientsList';
+import MenuStepsList from '../components/menu/MenuStepsList';
 import FormError from '../components/FormError';
 
 import addMenuItemFormReducer from '../../reducers/addMenuItemFormReducer';
@@ -153,9 +154,13 @@ export default function AddMenuItem({onAddMenuItem, onClose}) {
           </label>
         </div>
         <div className='w-64 h-64'>
-          <p>Current ingredient list:</p>
+          <p className='text-lg'>Current ingredient list:</p>
           <div className='h-64 overflow-scroll'>
             <MenuIngredientsList ingredients={state.ingredients}/>
+          </div>
+          <p className='text-lg'>Current steps:</p>
+          <div className='h-64 overflow-scroll'>
+            <MenuStepsList steps={state.steps}/>
           </div>
         </div>
       </div>

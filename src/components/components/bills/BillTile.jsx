@@ -9,7 +9,7 @@ export default function BillTile({details}) {
       <div className='w-16 flex items-center justify-center h-full'>
         <FontAwesomeIcon className='h-14 text-white' icon={`${icon}`}/>
       </div>
-      <div className='w-16 flex flex-col flex-1 justify-between py-4'>
+      <div className='w-16 flex flex-col flex-1 justify-between overflow-hidden py-4'>
         <h1 className='text-2xl text-white'>{heading}</h1>
         <p className='w-full text-xl text-white text-opacity-50'>{dueDate}</p>
       </div>
