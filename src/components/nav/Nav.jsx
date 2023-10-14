@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -11,35 +11,44 @@ export default function Nav() {
 
 	const { deleteToken } = useContext(AuthContext);
 
+	const [isCollapsed, setCollapsed] = useState(false);
+
+	const handleToggle = () => {
+			setCollapsed(!isCollapsed);
+	};
+
 	return (
 		<div className='flex'>
-			<div id='sidebar' className='flex flex-col h-screen w-64 border-r-2 bg-gray-950 border-gray-800'>
+			<div id='sidebar' className={`flex flex-col h-screen border-r-2 bg-gray-950 border-gray-800 ${ isCollapsed ? 'w-16' : 'w-64'}`}>
 				<nav className='px-3 py-2'>
-					<ul className='font-medium text-white'>
-						<Link to={'/'}>
-							<li className='rounded-lg hover:bg-gray-800 px-3 py-3'>
-								<FontAwesomeIcon icon='fa-solid fa-home' className='pr-2'/>HomeHub
-							</li>
-						</Link>
-						<Link to={'/bills'}>
-							<li className='rounded-lg hover:bg-gray-900 px-3 py-3'>
-								<FontAwesomeIcon icon='fa-solid fa-credit-card' className='pr-2'/>Bills
-							</li>
-						</Link>
-						<Link to={'/menu/1'}>
-							<li className='rounded-lg hover:bg-gray-900 px-3 py-3'>
-								<FontAwesomeIcon icon='fa-solid fa-utensils' className='pr-2'/>Menu
-							</li>
-						</Link>
-						<Link to={'/shoppinglist'}>
-							<li className='rounded-lg hover:bg-gray-900 px-3 py-3'>
-								<FontAwesomeIcon icon='fa-solid fa-scroll' className='pr-2'/>Shopping List
-							</li>
-						</Link>
-					</ul>
+					<div className='flex'>
+						<FontAwesomeIcon icon={`fa-solid ${isCollapsed ? 'fa-angles-right' : 'fa-angles-left'}`} className='text-white cursor-pointer px-3 py-2' onClick={handleToggle}/>
+					</div>
+						<ul className='font-medium text-white'>
+							<Link to={'/'}>
+								<li className='hover:bg-gray-800 px-3 py-3'>
+									<FontAwesomeIcon icon='fa-solid fa-home'/> { !isCollapsed && 'Home' }
+								</li>
+							</Link>
+							<Link to={'/bills'}>
+								<li className='hover:bg-gray-900 px-3 py-3'>
+									<FontAwesomeIcon icon='fa-solid fa-credit-card'/> { !isCollapsed && 'Bills' }
+								</li>
+							</Link>
+							<Link to={'/menu/1'}>
+								<li className='hover:bg-gray-900 px-3 py-3'>
+									<FontAwesomeIcon icon='fa-solid fa-utensils'/> { !isCollapsed && 'Menu' }
+								</li>
+							</Link>
+							<Link to={'/shoppinglist'}>
+								<li className='hover:bg-gray-900 px-3 py-3'>
+									<FontAwesomeIcon icon='fa-solid fa-scroll'/> { !isCollapsed && 'Shopping List' }
+								</li>
+							</Link>
+						</ul>
 				</nav>
 				<div className='flex justify-center mt-auto pb-4'>
-					<CustomButton content={'Logout'} click={deleteToken} customClasses={'w-full'}/>
+					<CustomButton content={isCollapsed ? <FontAwesomeIcon icon='fa-solid fa-right-from-bracket'/> : 'Logout'} click={deleteToken} customClasses={'w-full'}/>
 				</div>
 			</div>
 			<div id='detail' className='h-screen w-full'>
