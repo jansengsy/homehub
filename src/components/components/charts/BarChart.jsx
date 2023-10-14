@@ -36,8 +36,8 @@ export default function BarChart({ chartData }) {
 
   return (
     <>
-      <h2 className='text-center'>Monthly water usage:</h2>
-      <div className='flex justify-center max-h-[460px]'>
+      <h2 className='text-center text-white'>Monthly water usage:</h2>
+      <div className='flex justify-center max-h-[400px]'>
         <Bar options={options} data={data} />
       </div>
     </>
