@@ -43,7 +43,7 @@ export default function Home() {
     <>
       <h1 className='text-xl text-white pb-2'>Welcome back, {user.username}!</h1>
       <div>
-        <h1>Upcoming bills</h1>
+        <h1 className='text-white'>Upcoming bills</h1>
         { loading ? <LoadingSpinner /> : <BillsContainer bills={bills}/>}
       </div>
     </>
