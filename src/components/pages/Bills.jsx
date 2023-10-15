@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useBillsData } from '../../hooks/useBillData';
 
 import SpendingTrends from '../components/bills/SpendingTrends';
 import BillsContainer from '../components/bills/BillsContainer';
@@ -6,22 +6,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 
 export default function Bills() {
 
-  const [bills, setBills] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch('http://localhost:8080/bills', {
-      method: 'GET',
-    })
-		.then(response => response.json())
-		.then(data => {
-      setBills(data);
-      setLoading(false);
-		})
-		.catch(error => {
-      console.error('Error fetching data:', error);
-		});
-  }, []);
+  const { bills, loading } = useBillsData();
 
   return (
     <div id='bills' className='flex flex-col min-h-full'>

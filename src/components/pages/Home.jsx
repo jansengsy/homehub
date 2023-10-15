@@ -1,29 +1,15 @@
 import { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 
+import { useBillsData } from '../../hooks/useBillData';
+
 import BillsContainer from '../components/bills/BillsContainer';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 export default function Home() {
 
   const { user } = useContext(AuthContext);
-
-  const [bills, setBills] = useState();
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch('http://localhost:8080/bills', {
-      method: 'GET',
-    })
-		.then(response => response.json())
-		.then(data => {
-      setUpcomingBills(data);
-      setLoading(false);
-		})
-		.catch(error => {
-      console.error('Error fetching data:', error);
-		});
-  }, []);
+  const { bills, loading } = useBillsData();
 
   const setUpcomingBills = (bills) => {
     const recentBills = bills.filter((bill) => {
