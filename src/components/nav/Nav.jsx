@@ -19,7 +19,7 @@ export default function Nav() {
 
 	return (
 		<div className='flex'>
-			<div id='sidebar' className={`flex flex-col h-screen border-r-2 bg-gray-950 border-gray-800 ${ isCollapsed ? 'w-16' : 'w-64'}`}>
+			<div id='sidebar' className={`flex flex-col h-screen border-r-2 bg-gray-950 border-gray-800 ${ isCollapsed ? 'w-16' : 'w-64'} fixed`}>
 				<nav className='px-3 py-2'>
 					<div className={`flex ${ isCollapsed ? '' : 'justify-end'}`}>
 						<FontAwesomeIcon icon={`fa-solid ${isCollapsed ? 'fa-angles-right' : 'fa-angles-left'}`} className='text-white cursor-pointer px-3 py-2' onClick={handleToggle}/>
@@ -52,7 +52,7 @@ export default function Nav() {
 				</div>
 			</div>
 			<div id='detail' className='h-screen w-full'>
-				<PageWrapper>
+				<PageWrapper style={ isCollapsed ? 'ml-16' : 'ml-64' }>
 					<Outlet /> {/* Similar to slots in vue but in the context of route elements */}
 				</PageWrapper>
 			</div>
