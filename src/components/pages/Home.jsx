@@ -12,7 +12,7 @@ export default function Home() {
   const { bills, loading } = useBillsData();
 
   const setUpcomingBills = (bills) => {
-    const recentBills = bills.filter((bill) => {
+    return bills.filter((bill) => {
       const today = new Date();
       const due = new Date(bill.dueDate);
 
@@ -21,8 +21,6 @@ export default function Home() {
 
       return daysDiff <= 7;
     });
-
-    setBills(recentBills);
   }
 
   return (
@@ -30,7 +28,7 @@ export default function Home() {
       <h1 className='text-xl text-white pb-2'>Welcome back, {user.username}!</h1>
       <div>
         <h1 className='text-white'>Upcoming bills</h1>
-        { loading ? <LoadingSpinner /> : <BillsContainer bills={bills}/>}
+        { loading ? <LoadingSpinner /> : <BillsContainer bills={setUpcomingBills(bills)}/>}
       </div>
     </>
   );
