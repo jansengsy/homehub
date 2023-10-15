@@ -4,6 +4,7 @@ import { ProtectedRoute } from './routes/ProtectedRoute';
 import ErrorPage from '../components/pages/errors/Error-page';
 import Nav from '../components/nav/Nav';
 import Bills from '../components/pages/Bills';
+import Bill from '../components/pages/Bill';
 import Home from '../components/pages/Home';
 import Menu from '../components/pages/Menu';
 import ShoppingList from '../components/pages/ShoppingList';
@@ -21,8 +22,12 @@ const Router = createBrowserRouter([
         element: <ProtectedRoute><Home /></ProtectedRoute>,
       },
       {
-        path: 'bills',
+        path: 'bills/:id',
         element: <ProtectedRoute><Bills /></ProtectedRoute>,
+      },
+      {
+        path: 'bill/:id',
+        element: <ProtectedRoute><Bill /></ProtectedRoute>,
       },
       {
         path: 'menu/:id',

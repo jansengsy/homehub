@@ -45,7 +45,7 @@ export default function Nav() {
 								<FontAwesomeIcon icon='fa-solid fa-home'/> { !isCollapsed && 'Home' }
 							</li>
 						</Link>
-						<Link to={'/bills'}>
+						<Link to={'/bills/1'}>
 							<li className='hover:bg-gray-900 px-3 py-3'>
 								<FontAwesomeIcon icon='fa-solid fa-credit-card'/> { !isCollapsed && 'Bills' }
 							</li>

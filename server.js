@@ -21,36 +21,42 @@ app.use('/login', (req, res) => {
 app.use('/bills', (req, res) => {
   res.send([
     {
+      'id': 1,
       'icon': 'fa-brands fa-spotify',
       'heading': 'Spotify',
       'dueDate': new Date(2023, 9, 17),
       'amount': '9.99',
     },
     {
+      'id': 2,
       'icon': 'fa-solid fa-faucet',
       'heading': 'Water',
       'dueDate': new Date(2023, 9, 22),
       'amount': '59.72',
     },
     {
+      'id': 3,
       'icon': 'fa-solid fa-dumbbell',
       'heading': 'Gym',
       'dueDate': new Date(2023, 9, 30),
       'amount': '29.99',
     },
     {
+      'id': 4,
       'icon': 'fa-brands fa-amazon',
       'heading': 'Cat food',
       'dueDate': new Date(2023, 9, 15),
       'amount': '12.99',
     },
     {
+      'id': 5,
       'icon': 'fa-solid fa-mobile',
       'heading': 'Phone',
       'dueDate': new Date(2023, 10, 6),
       'amount': '35.00',
     },
     {
+      'id': 6,
       'icon': 'fa-solid fa-car',
       'heading': 'Car Insurace',
       'dueDate': new Date(2023, 10, 16),
