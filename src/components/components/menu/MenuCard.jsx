@@ -12,7 +12,7 @@ export default function MenuCard({ item, removeMenuItem }) {
   };
   
   return (
-    <>
+    <div className='flex flex-col justify-between h-64'>
       <div className='flex justify-between w-full'>
         <h3 className='text-2xl'>{title}</h3>
         <button
@@ -26,6 +26,6 @@ export default function MenuCard({ item, removeMenuItem }) {
         <span className='text-left'>Serves {servings} people</span>
         <span className='text-right'>{prepTime} mins</span>
       </div>
-    </>
+    </div>
   );
 }
