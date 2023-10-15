@@ -21,7 +21,7 @@ export default function Nav() {
 		<div className='flex'>
 			<div id='sidebar' className={`flex flex-col h-screen border-r-2 bg-gray-950 border-gray-800 ${ isCollapsed ? 'w-16' : 'w-64'}`}>
 				<nav className='px-3 py-2'>
-					<div className='flex'>
+					<div className={`flex ${ isCollapsed ? '' : 'justify-end'}`}>
 						<FontAwesomeIcon icon={`fa-solid ${isCollapsed ? 'fa-angles-right' : 'fa-angles-left'}`} className='text-white cursor-pointer px-3 py-2' onClick={handleToggle}/>
 					</div>
 						<ul className='font-medium text-white'>
