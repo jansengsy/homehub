@@ -29,16 +29,16 @@ export default function BillTile({bill}) {
   const formattedDueDate = formatDueDate(dueDate);
 
   return (
-    <div className='flex gap-x-5 h-28 bg-gray-700 py-2 px-4 hover:bg-gray-600 cursor-pointer'>
-      <div className='w-16 flex items-center justify-center h-full'>
-        <FontAwesomeIcon className='h-14 text-white' icon={`${icon}`}/>
+    <div className='flex items-center gap-x-5 overflow-hidden h-28 px-4'>
+      <div className='flex items-center justify-center flex-shrink-0 w-1/4'>
+        <FontAwesomeIcon className='h-14 text-white' icon={`${icon}`} />
       </div>
-      <div className='w-16 flex flex-col flex-1 justify-between overflow-hidden py-4'>
-        <h1 className='text-2xl text-white'>{heading}</h1>
-        <p className='w-full text-xl text-white text-opacity-50'>{formattedDueDate}</p>
+      <div className='flex flex-col flex-grow'>
+        <h1 className='text-xl text-white overflow-hidden'>{heading}</h1>
+        <p className='text-md text-white text-opacity-50 overflow-hidden'>{formattedDueDate}</p>
       </div>
-      <div className='flex items-center text-white text-2xl'>
-        <h1>£{amount}</h1>
+      <div className='flex items-center justify-end flex-shrink-0 w-1/4'>
+        <h1 className='text-white text-2xl'>£{amount}</h1>
       </div>
     </div>
   );
