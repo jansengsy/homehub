@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function BillTile({details}) {
+export default function BillTile({bill}) {
 
-  const { icon, heading, dueDate, amount } = details;
+  const { icon, heading, dueDate, amount } = bill;
 
   const formatDueDate = (date) => {
     const today = new Date();
