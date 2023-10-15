@@ -26,7 +26,6 @@ export default function Home() {
   }, []);
 
   const setUpcomingBills = (bills) => {
-
     const recentBills = bills.filter((bill) => {
       const today = new Date();
       const due = new Date(bill.dueDate);
@@ -37,7 +36,6 @@ export default function Home() {
       return daysDiff <= 7;
     });
 
-    console.log(recentBills);
     setBills(recentBills);
   }
 
