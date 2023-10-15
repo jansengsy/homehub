@@ -15,8 +15,8 @@ export default function Bills() {
     })
 		.then(response => response.json())
 		.then(data => {
-      setLoading(false);
       setBills(data);
+      setLoading(false);
 		})
 		.catch(error => {
       console.error('Error fetching data:', error);
