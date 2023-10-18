@@ -8,7 +8,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 
 export default function Menu() {
 
-	const { token } = useContext(AuthContext);
+	const { token, user } = useContext(AuthContext);
 
 	const [isItemOpen, setIsItemOpen] = useState(false);
 	const [selectedItem, setSelectedItem] = useState(false);
@@ -16,7 +16,7 @@ export default function Menu() {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		fetch('http://localhost:8080/menu/1', {
+		fetch(`http://localhost:8080/menu/${user.id}`, {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json',

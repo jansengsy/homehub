@@ -36,11 +36,30 @@ app.use('/login', (req, res) => {
 
 app.use('/shopping/:id', verifyToken, (req, res) => {
   res.send([
-
+    {
+      'id': 1,
+      'icon': 'fa-solid fa-house',
+      'item': 'item 1',
+    },
+    {
+      'id': 2,
+      'icon': 'fa-solid fa-house',
+      'item': 'item 2',
+    },
+    {
+      'id': 3,
+      'icon': 'fa-solid fa-house',
+      'item': 'item 3',
+    },
+    {
+      'id': 4,
+      'icon': 'fa-solid fa-house',
+      'item': 'item 4',
+    },
   ]);
 });
 
-app.use('/bills', verifyToken, (req, res) => {
+app.use('/bills/:id', verifyToken, (req, res) => {
   res.send([
     {
       'id': 1,

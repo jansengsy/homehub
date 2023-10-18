@@ -4,13 +4,13 @@ import { AuthContext } from '../context/AuthContext';
 
 export const useBillsData = () => {
 
-  const { token } = useContext(AuthContext);
+  const { token, user } = useContext(AuthContext);
 
   const [bills, setBills] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:8080/bills', {
+    fetch(`http://localhost:8080/bills/${user.id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
