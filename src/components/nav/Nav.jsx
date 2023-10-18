@@ -9,7 +9,7 @@ import { AuthContext } from '../../context/AuthContext';
 
 export default function Nav() {
 
-	const { deleteToken } = useContext(AuthContext);
+	const { user, deleteToken } = useContext(AuthContext);
 
 	const [isCollapsed, setCollapsed] = useState(false);
 
@@ -45,17 +45,17 @@ export default function Nav() {
 								<FontAwesomeIcon icon='fa-solid fa-home'/> { !isCollapsed && 'Home' }
 							</li>
 						</Link>
-						<Link to={'/bills/1'}>
+						<Link to={`/bills/${user.id}`}>
 							<li className='hover:bg-gray-900 px-3 py-3'>
 								<FontAwesomeIcon icon='fa-solid fa-credit-card'/> { !isCollapsed && 'Bills' }
 							</li>
 						</Link>
-						<Link to={'/menu/1'}>
+						<Link to={`/menu/${user.id}`}>
 							<li className='hover:bg-gray-900 px-3 py-3'>
 								<FontAwesomeIcon icon='fa-solid fa-utensils'/> { !isCollapsed && 'Menu' }
 							</li>
 						</Link>
-						<Link to={'/shoppinglist'}>
+						<Link to={`/shoppinglist/${user.id}`}>
 							<li className='hover:bg-gray-900 px-3 py-3'>
 								<FontAwesomeIcon icon='fa-solid fa-scroll'/> { !isCollapsed && 'Shopping List' }
 							</li>
