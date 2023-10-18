@@ -50,6 +50,7 @@ export default function List() {
       completed: false,
     }
     setList([...list, item]);
+    setNewItem('');
   };
 
   return (
@@ -66,8 +67,16 @@ export default function List() {
         </div>
       }
       <div>
-        <input className='p-2 mr-2' type='text' onChange={e => setNewItem(e.target.value)}/>
-        <CustomButton content={'Add new item'} click={() => addNewListItem(newItem)}/>
+        <input
+          className='p-2 mr-2'
+          type='text'
+          value={newItem}
+          onChange={e => setNewItem(e.target.value)}
+        />
+        <CustomButton
+          content={'Add new item'}
+          click={() => addNewListItem(newItem)}
+        />
       </div>
     </div>
   );
