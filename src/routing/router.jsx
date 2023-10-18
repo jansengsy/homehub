@@ -38,7 +38,7 @@ const Router = createBrowserRouter([
         element: <ProtectedRoute><Menu /></ProtectedRoute>,
       },
       {
-        path: 'shoppinglist',
+        path: 'shoppinglist/:id',
         element: <ProtectedRoute><ShoppingList /></ProtectedRoute>,
       },
     ],
