@@ -39,22 +39,32 @@ app.use('/shopping/:id', verifyToken, (req, res) => {
     {
       'id': 1,
       'icon': 'fa-solid fa-house',
-      'item': 'item 1',
+      'item': 'Bread',
+      'completed': false,
     },
     {
       'id': 2,
       'icon': 'fa-solid fa-house',
-      'item': 'item 2',
+      'item': 'Eggs',
+      'completed': false,
     },
     {
       'id': 3,
       'icon': 'fa-solid fa-house',
-      'item': 'item 3',
+      'item': 'Grapefruit',
+      'completed': true,
     },
     {
       'id': 4,
       'icon': 'fa-solid fa-house',
-      'item': 'item 4',
+      'item': 'Cat food',
+      'completed': false,
+    },
+    {
+      'id': 5,
+      'icon': 'fa-solid fa-house',
+      'item': 'Breakfast cereal',
+      'completed': true,
     },
   ]);
 });
