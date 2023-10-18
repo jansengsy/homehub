@@ -7,6 +7,21 @@ const app = express();
 // Add cors as a middle ware
 app.use(cors());
 
+// Token verification middleware. For now this will just check that the token is 'test123'
+const verifyToken = (req, res, next) => {
+  const userToken = req.headers.authorization;
+
+  if (!userToken) {
+    return res.status(401).json({ message: 'Unauthorized: Missing token' });
+  }
+
+  if (userToken !== 'Bearer test123') {
+    return res.status(401).json({ message: 'Unauthorized: Invalid token' });
+  }
+
+  next();
+};
+
 app.use('/login', (req, res) => {
   res.send({
     token: {
@@ -14,11 +29,18 @@ app.use('/login', (req, res) => {
     },
     user: {
       username: 'jansengsy',
+      id: 1,
     }
   });
 });
 
-app.use('/bills', (req, res) => {
+app.use('/shopping/:id', verifyToken, (req, res) => {
+  res.send([
+
+  ]);
+});
+
+app.use('/bills', verifyToken, (req, res) => {
   res.send([
     {
       'id': 1,
@@ -73,7 +95,7 @@ app.use('/bills', (req, res) => {
 })
 
 // Menu endpoint to provide dummy menu items
-app.use('/menu/:id', (req, res) => {
+app.use('/menu/:id', verifyToken, (req, res) => {
   res.send([
     {
       id: 0,

@@ -1,10 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+
+import { AuthContext } from '../../context/AuthContext';
 
 import MenuDirections from '../components/menu/MenuDirections';
 import MenuList from '../components/menu/MenuList';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 export default function Menu() {
+
+	const { token } = useContext(AuthContext);
 
 	const [isItemOpen, setIsItemOpen] = useState(false);
 	const [selectedItem, setSelectedItem] = useState(false);
@@ -14,6 +18,10 @@ export default function Menu() {
 	useEffect(() => {
 		fetch('http://localhost:8080/menu/1', {
 				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${token}`,
+				}
 			})
 			.then(response => response.json())
 			.then(data => {

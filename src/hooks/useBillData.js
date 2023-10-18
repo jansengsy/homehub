@@ -1,12 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+
+import { AuthContext } from '../context/AuthContext';
 
 export const useBillsData = () => {
+
+  const { token } = useContext(AuthContext);
+
   const [bills, setBills] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('http://localhost:8080/bills', {
       method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      }
     })
       .then(response => response.json())
       .then(data => {
