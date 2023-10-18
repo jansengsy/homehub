@@ -63,6 +63,7 @@ app.use('/bills', (req, res) => {
       'amount': '68.99',
     },
     {
+      'id': 7,
       'icon': 'fa-solid fa-house',
       'heading': 'Rent',
       'dueDate': new Date(2023, 11, 2),

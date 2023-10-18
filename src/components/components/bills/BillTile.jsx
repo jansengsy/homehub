@@ -1,9 +1,8 @@
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function BillTile({bill}) {
 
-  const { id, icon, heading, dueDate, amount } = bill;
+  const { icon, heading, dueDate, amount } = bill;
 
   const formatDueDate = (date) => {
     const today = new Date();
@@ -30,19 +29,17 @@ export default function BillTile({bill}) {
   const formattedDueDate = formatDueDate(dueDate);
 
   return (
-    <Link to={`/bill/${id}`}>
-      <div className='flex items-center gap-x-5 overflow-hidden h-28 px-4'>
-        <div className='flex items-center justify-center flex-shrink-0 w-1/4'>
-          <FontAwesomeIcon className='h-14 text-white' icon={`${icon}`} />
-        </div>
-        <div className='flex flex-col flex-grow'>
-          <h1 className='text-xl text-white overflow-hidden'>{heading}</h1>
-          <p className='text-md text-white text-opacity-50 overflow-hidden'>{formattedDueDate}</p>
-        </div>
-        <div className='flex items-center justify-end flex-shrink-0 w-1/4'>
-          <h1 className='text-white text-2xl'>£{amount}</h1>
-        </div>
+    <div className='flex items-center gap-x-5 overflow-hidden h-28 px-4'>
+      <div className='flex items-center justify-center flex-shrink-0 w-1/4'>
+        <FontAwesomeIcon className='h-14 text-white' icon={`${icon}`} />
       </div>
-    </Link>
+      <div className='flex flex-col flex-grow'>
+        <h1 className='text-xl text-white overflow-hidden'>{heading}</h1>
+        <p className='text-md text-white text-opacity-50 overflow-hidden'>{formattedDueDate}</p>
+      </div>
+      <div className='flex items-center justify-end flex-shrink-0 w-1/4'>
+        <h1 className='text-white text-2xl'>£{amount}</h1>
+      </div>
+    </div>
   );
 }
