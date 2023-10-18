@@ -38,31 +38,26 @@ app.use('/shopping/:id', verifyToken, (req, res) => {
   res.send([
     {
       'id': 1,
-      'icon': 'fa-solid fa-house',
       'item': 'Bread',
       'completed': false,
     },
     {
       'id': 2,
-      'icon': 'fa-solid fa-house',
       'item': 'Eggs',
       'completed': false,
     },
     {
       'id': 3,
-      'icon': 'fa-solid fa-house',
       'item': 'Grapefruit',
       'completed': true,
     },
     {
       'id': 4,
-      'icon': 'fa-solid fa-house',
       'item': 'Cat food',
       'completed': false,
     },
     {
       'id': 5,
-      'icon': 'fa-solid fa-house',
       'item': 'Breakfast cereal',
       'completed': true,
     },
