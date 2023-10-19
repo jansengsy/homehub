@@ -21,7 +21,6 @@ export default function BillsContainer({bills}) {
           </Card>
         ))}
       </Grid>
-      
     </div>
   );
 }
