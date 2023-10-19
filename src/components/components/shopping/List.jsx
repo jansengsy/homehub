@@ -29,7 +29,7 @@ export default function List() {
     .catch(error => {
       console.error('Error fetching data:', error);
     })
-  }, []);
+  }, [token, user.id]);
 
   const completeItem = (id) => {
     const updatedList = list.map((item) => {

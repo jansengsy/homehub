@@ -26,7 +26,7 @@ export const useBillsData = () => {
       .catch(error => {
         console.error('Error fetching data:', error);
       });
-  }, []);
+  }, [token, user.id]);
 
   return { bills, loading };
 };

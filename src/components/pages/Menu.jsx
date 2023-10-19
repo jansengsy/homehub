@@ -31,7 +31,7 @@ export default function Menu() {
 			.catch(error => {
 				console.error('Error fetching data:', error);
 			});
-	}, []);
+	}, [token, user.id]);
 
 	const handleSelectedItem = (item) => {
 		setIsItemOpen(true);

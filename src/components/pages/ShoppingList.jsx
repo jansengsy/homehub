@@ -1,4 +1,4 @@
-import List from "../components/shopping/List";
+import List from '../components/shopping/List';
 
 export default function ShoppingList() {
   return (
